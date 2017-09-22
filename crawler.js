@@ -15,8 +15,7 @@ module.exports = function(roomNumber){
     response.on("end", function(){
       var zigbangData = JSON.parse(data);
       console.log(zigbangData);
-      console.log("roomNumber",roomNumber);
-      deposit = zigbangData.items[3].item.deposit;
+      deposit = zigbangData.items[roomNumber].item.deposit;
     });
   });
 
