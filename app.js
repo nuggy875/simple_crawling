@@ -11,14 +11,15 @@ var app = http.createServer(function(req,res){
     var data = "";
 
     response.on("data", function(chunk){
-      data = data + chunk;
+      data += chunk;
     });
     response.on("end", function(){
       var zigbangData = JSON.parse(data);
       if (roomnumData=="favicon.ico"){
         console.log(roomnumData);
+        res.end();
       }else if(roomnumData==""){
-        res.write("This is Web Application that print the deposit of the room.\n\nInput the 'item number' on URL\n\n\nex) deposit of item 6 => localhost:3000/6");
+        res.write("This is Web Application that print the deposit of the room.\n\nInput the 'item number' on URL\n\n\nex) Deposit of item 6 => localhost:3000/6");
         res.end();
       }else{
         deposit = zigbangData.items[roomnumData].item.deposit;
